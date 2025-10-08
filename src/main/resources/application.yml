@@ -3,6 +3,29 @@ server:
 spring:
   application:
     name: message
+# Definicion de funcion compuesta email|sms
+# Al usar el pipe (composición secuencial),
+# se interpreta que la salida de email
+# se use como la entrada de sms
   cloud:
     function:
       definition: email|sms
+# Configuracion de las entradas y salidas (bindings) de los canales de mensajería
+    stream:
+      bindings:
+# Configuracion del canal de entrada (input) de la función email
+# Entrada 0 del binding de la función email
+        email-in-0:
+# Define el nombre del tópico/cola donde el binding se conectará
+# El nombre del topico/cola puede ser cualquier nombre
+# pero debe coincidir con el nombre del tópico/cola
+          destination: send-communication
+# Define el grupo de consumidores (consumer group) al que pertenece este binding
+          group: ${spring.application.name}
+# Configuracion de conexión con RabbitMQ
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    connection-timeout: 10s
