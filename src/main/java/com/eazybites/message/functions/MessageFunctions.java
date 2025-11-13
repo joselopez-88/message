@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 import com.eazybites.message.dto.AccountsMsgDto;
 
-
 @Configuration
 public class MessageFunctions {
     private static final Logger logger = LoggerFactory.getLogger(MessageFunctions.class);
