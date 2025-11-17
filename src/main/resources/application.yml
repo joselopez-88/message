@@ -27,11 +27,7 @@ spring:
 # El nombre del topico/cola puede ser cualquier nombre
 # pero debe coincidir con el nombre del tópico/cola
           destination: communication-sent
-
-# Configuracion de conexión con RabbitMQ
-  rabbitmq:
-    host: rabbitmq
-    port: 5672
-    username: guest
-    password: guest
-    connection-timeout: 10s
+      kafka:
+        binder:
+          brokers:
+          - localhost:9092
