@@ -31,3 +31,15 @@ spring:
         binder:
           brokers:
           - localhost:9092
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - health
+        - info
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true  
